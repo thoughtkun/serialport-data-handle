@@ -2,6 +2,7 @@ var dataParse = require('./dataParse').dataParse //串口数据解析模块
 var sendToServer = require('./request').sendToServer //http请求模块
 const querystring = require('querystring');
 var SerialPort = require('serialport'); //串口数据获取模块
+
 var Readline = SerialPort.parsers.Readline;
 var ByteLength = SerialPort.parsers.ByteLength;
 var count = 0; //打件次数
@@ -13,6 +14,7 @@ var port = new SerialPort('COM3', {
 var parser = port.pipe(new ByteLength({
     length: 46
 }));
+
 parser.on('data', function (data) {
     if (data == '' || data == null) {
         data = 'FFFFD801000000A8000064000000000000000000040BF4';
