@@ -4,6 +4,8 @@ exports.dataParse = function (str) {
     var beatSec = 0;
     var beat = 0;
     // 打件次数
+    var start=str.indexOf('FFFF');
+    var str=str.slice(start);
     count = parseInt(str.slice(8, 16), 16);
     //节拍分钟
     beatMin = parseInt(str.slice(40, 42), 16);
